@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@theme{--color-lav:#A58BA4;--color-ink:#17151F;--color-lime:#D8FF5C;--color-off:#F8F7F3;--color-mute:#777484;
+--font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--font-sans:"Instrument Sans",system-ui,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,monospace}
+html{font-size:15px;scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--color-off);color:var(--color-ink);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:.95}
+:focus-visible{outline:2px solid var(--color-lime);outline-offset:3px;box-shadow:0 0 0 4px var(--color-ink)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.flowline{stroke-dasharray:4 6;animation:dash 2.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.halo{transform-origin:center;transform-box:fill-box;animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.arr{display:inline-block;transition:transform .25s}
+.group:hover .arr,a:hover>.arr{transform:translate(4px,-4px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+
+.spin{animation:spin 60s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.floaty{animation:flt 7s ease-in-out infinite}.floaty2{animation:flt 6s ease-in-out infinite}
+@keyframes flt{50%{translate:0 -8px}}
+.halo2{animation:pulse 6s ease-in-out infinite}
+
+.breathe{transform-origin:50% 100%;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{transform:translateY(-4px) scale(1.012)}}
+.blink{clip-path:inset(0 0 100% 0);animation:blink 5.5s infinite}
+@keyframes blink{0%,89%{clip-path:inset(0 0 100% 0)}92%,95%{clip-path:inset(0)}98%,100%{clip-path:inset(0 0 100% 0)}}
