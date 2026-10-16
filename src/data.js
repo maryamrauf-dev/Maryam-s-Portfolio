@@ -2,20 +2,20 @@
 export const links = {
   github: 'https://github.com/maryamrauf-dev',
   linkedin: 'https://www.linkedin.com/in/maryam-rauf-792a1230a/',
-  email: 'maryamrauf1894@gmail.com', // add your email: it will switch every "Let's talk" button to mailto:
+  email: 'maryamrauf1894@gmail.com', 
 }
 const gh = (r) => `https://github.com/maryamrauf-dev/${r}`
 export const projects = [
  { id:'notes-keeper', n:'01', group:'web', title:'Notes Keeper', img:'keeper', note:'Trash · restore · delete', repo:gh('keeper_app'), live:'https://keeper-app-zeta-woad.vercel.app',
   summary:'A responsive notes app with accounts, editing, trash and restore.',
   tags:['React','Vite','Material UI','Axios','Node.js','Express','Mongoose','MongoDB'],
-  purpose:'A familiar, notes-style app where people sign in, keep their notes organised, and can recover anything they delete by mistake.',
+  purpose:'A familiar, notes style app where people sign in, keep their notes organised, and can recover anything they delete by mistake.',
   features:['Account registration and login','Create and edit notes','Move notes to trash, restore them, or delete permanently','Responsive sidebar for switching between notes and trash','Layouts for desktop, tablet and mobile'],
   arch:['React + Material UI client','Axios','Express API','Mongoose models','MongoDB'],
   decisions:['Trash is a separate state, so deleting is reversible until it is made permanent.','Client and server are separate projects joined by a REST API.','The database connection string lives in a git-ignored .env file.'],
   stack:['React','Vite','Material UI','Axios','Node.js','Express','Mongoose','MongoDB']},
- { id:'inkly', n:'02', group:'web', title:'Inkly', kind:'Blogging platform', img:'inkly', note:'Google OAuth + JWT cookies', repo:gh('Blog_platform'), live:'https://blog-platform-nine-flax.vercel.app/',
-  summary:'A server-rendered blogging platform with Google sign-in and author-only editing.',
+ { id:'Memento', n:'02', group:'web', title:'Memento', kind:'Blogging platform', img:'Memento.png', note:'Google OAuth + JWT cookies', repo:gh('Blog_platform'), live:'https://blog-platform-nine-flax.vercel.app/',
+  summary:'A server rendered blogging platform with Google sign-in and author only editing.',
   tags:['Express 5','EJS','MongoDB','Passport','OAuth','JWT'],
   purpose:'A small, quiet place to write and read articles. Anyone can browse; registered authors manage their own posts.',
   features:['Browse recent articles without signing in','Register and sign in with email and password','Sign in with Google OAuth 2.0','Create, edit, view and delete your own articles','Sessions as JWTs in HTTP-only cookies'],
@@ -31,7 +31,7 @@ export const projects = [
   decisions:['Cart state is centralised in Redux Toolkit so the navbar and cart stay in sync.','Client-side routing keeps navigation instant.'],
   stack:['React 19','Vite','React Router','Redux Toolkit','Tailwind CSS']},
  { id:'expense-tracker', n:'04', group:'web', title:'Expense Tracker', img:'expense', note:'Server-side rendered', repo:'', live:'https://expense-tracker-eta-five-77.vercel.app/',
-  summary:'A server-rendered expense manager that keeps a running total.',
+  summary:'A server rendered expense manager that keeps a running total.',
   tags:['Node.js','Express','EJS','Bootstrap','CRUD'],
   purpose:'Keep track of where money goes: add expenses, sort them into categories and see total spending update.',
   features:['Add, categorize and delete expenses','Total spending calculated dynamically','Expense history list'],
@@ -64,24 +64,26 @@ export const projects = [
   stack:['Python','scikit-learn','TF-IDF','Logistic Regression','Streamlit']},
 ]
 export const experience = [
- { role:'MERN Stack Internship', org:'NexenLabz', mode:'Remote', period:'', bullets:[
-  'Built a notes application with account registration and login, note editing, trash and restore (Notes Keeper).',
-  'Developed a server-rendered blogging platform with Google OAuth and JWT cookie authentication, restricting edits to authors (Inkly).',
-  'Built a React storefront with Redux Toolkit cart state, React Router navigation and product search (Jenpharm).']},
+ { role:'MERN Stack Internship', org:'NexenLabz', mode:'Remote', period:'Aug 2026 - Nov 2026', bullets:[
+  'Worked on full stack web application development using React, Node.js, Express.js, and MongoDB, focusing on responsive interfaces and structured application architecture',
+  'Implemented RESTful APIs, CRUD operations, database integration using Mongoose, and JWT based authentication and authorization.',
+  'Worked on frontend backend integration, debugging, and API testing while using Git and GitHub for version control and deploying applications.']},
  { role:'ML Engineering Internship', org:'NovaXccelerate', mode:'Hybrid', period:'Dec 2025 – Mar 2026', cert:'novax', bullets:[
-  'Trained a TF-IDF and Logistic Regression spam classifier in a scikit-learn Pipeline, with batch CSV analysis.',
-  'Built a retrieval-augmented calculus tutor that grounds Gemini answers in a textbook knowledge base.',
-  'Created an AI interview-preparation app with question generation, a conversational interviewer and evaluation.']},
+  'Worked on machine learning and NLP tasks, including text preprocessing, model training, and spam email detection using Scikit learn.',
+  'Implemented AI applications using Python, Streamlit, and LLM APIs.',
+  'Worked on AI based interview preparation tool with question generation, conversational interview, and automated feedback and evaluation.']},
 ]
 export const toolkit = [
  { t:'Frontend', d:'Interfaces and layout', i:'Layout', items:['HTML','CSS','JavaScript','React','Bootstrap','Tailwind CSS','Material UI','Redux Toolkit']},
  { t:'Backend and web', d:'Servers, APIs and data', i:'Server', items:['Node.js','Express.js','MongoDB','MongoDB Atlas','RESTful APIs','Postman','EJS']},
  { t:'Authentication and security', d:'Who can do what', i:'ShieldCheck', items:['OAuth','JWT','Authentication','Authorization','Protected routes','Access control']},
  { t:'AI and machine learning', d:'Models, retrieval and interfaces', i:'Brain', items:['Python','NLP','ML models','scikit-learn','LLMs','Transformer architecture','AI APIs','LangChain','Basic LangGraph','Vector databases','Pinecone','Streamlit']},
- { t:'Tools and deployment', d:'Shipping and versioning', i:'Wrench', items:['Git','GitHub','Railway','Vercel']},
- { t:'Soft skills', d:'How I work with people and ideas', i:'MessageSquare', items:['Communication','Personal branding','Writing','Problem solving']},
+ { t:'Tools and deployment', d:'Shipping and versioning', i:'Wrench', items:['Git','GitHub','Railway','Vercel','Postman']},
+ { t:'Soft skills', d:'How I work with people and ideas', i:'MessageSquare', items:['Communication','Personal branding','Writing','Problem solving','Prompt engineering','Teamwork','Collaboration']},
 ]
 export const certs = [
+ { t:'AI Fluency for Students', p:'Claude Academy', date:'October 2026', dur:'3 hours', img:'AIFluencyForStudents.png', url:'', tags:['AI Fluency','Responsible AI','Student Learning','Career Planning','4D Framework'],
+   d:'Helps students build AI fluency skills for learning, career planning, and academic success through responsible AI collaboration. Applies the 4D framework (delegation, description, discernment, diligence) to student life.'},
  { t:'The AI Engineer Course 2026', p:'Udemy · 365 Careers', date:'March 2026', dur:'29.5 hours', img:'udemy', url:'', tags:['AI Engineering','LLMs','Agents'],
    d:'Completed an AI engineering bootcamp covering LLMs, AI APIs, agent architectures and modern AI engineering workflows.'},
  { t:'AI For Everyone', p:'Coursera · DeepLearning.AI', date:'November 2025', dur:'', img:'aiforeveryone', url:'', tags:['AI Strategy','DeepLearning.AI','Coursera'],

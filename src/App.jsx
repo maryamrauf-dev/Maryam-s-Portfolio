@@ -4,7 +4,7 @@ import { Menu, X, Layout, Server, ShieldCheck, Brain, Wrench, MessageSquare } fr
 const Icons = { Layout, Server, ShieldCheck, Brain, Wrench, MessageSquare }
 import { links, projects, experience, toolkit, certs } from './data.js'
 
-const img = (n) => `${import.meta.env.BASE_URL}img/${n}.jpg`
+const img = (n) => `${import.meta.env.BASE_URL}img/${n}${n.includes('.') ? '' : '.jpg'}`
 const mail = links.email ? `mailto:${links.email}` : links.linkedin
 const Mono = ({ children, className = '' }) => <span className={`font-mono text-[11px] tracking-wide uppercase ${className}`}>{children}</span>
 const Arrow = () => <span className="arr" aria-hidden="true">↗</span>
@@ -19,6 +19,7 @@ function Reveal({ children, className = '' }) {
 }
 
 const nav = ['About', 'Projects', 'Experience', 'Certificates', 'Contact']
+const resumeUrl = `${import.meta.env.BASE_URL}MaryamRauf_FullStackDev_Resume.pdf`
 function Nav() {
   const [sc, setSc] = useState(false), [open, setOpen] = useState(false), [act, setAct] = useState('')
   const go = useNavigate(), loc = useLocation()
@@ -31,10 +32,10 @@ function Nav() {
     <header className={`fixed left-1/2 -translate-x-1/2 z-40 transition-all duration-300 ${sc ? 'top-3 w-[min(94vw,760px)] rounded-full bg-ink text-off shadow-lg' : 'top-0 w-full max-w-[1400px] text-ink'} px-4 md:px-8 py-3`}>
       <nav aria-label="Main" className="flex items-center justify-between">
         <a href="#top" onClick={jump('top')} className="font-display text-xl font-extrabold">MR<span className="text-lime bg-ink rounded-full px-0.5">.</span></a>
-        <ul className="hidden md:flex gap-1">{nav.map(n => <li key={n}><a href={`#${n.toLowerCase()}`} onClick={jump(n.toLowerCase())} aria-current={act === n ? 'true' : undefined} className={`px-3 py-1.5 rounded-full text-sm transition-colors hover:bg-lime hover:text-ink ${act === n ? 'bg-lime text-ink' : ''}`}>{n}</a></li>)}</ul>
+        <ul className="hidden md:flex gap-1">{nav.map(n => <li key={n}><a href={`#${n.toLowerCase()}`} onClick={jump(n.toLowerCase())} aria-current={act === n ? 'true' : undefined} className={`px-3 py-1.5 rounded-full text-sm transition-colors hover:bg-lime hover:text-ink ${act === n ? 'bg-lime text-ink' : ''}`}>{n}</a></li>)}<li><a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-full text-sm transition-colors hover:bg-lime hover:text-ink">My Resume</a></li></ul>
         <button className="md:hidden p-1" aria-expanded={open} aria-label="Toggle menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </nav>
-      {open && <ul className={`md:hidden mt-3 pb-2 grid gap-1 ${sc ? '' : 'bg-off'}`}>{nav.map(n => <li key={n}><a href={`#${n.toLowerCase()}`} onClick={jump(n.toLowerCase())} className="block px-3 py-2 rounded-lg hover:bg-lime hover:text-ink">{n}</a></li>)}</ul>}
+      {open && <ul className={`md:hidden mt-3 pb-2 grid gap-1 ${sc ? '' : 'bg-off'}`}>{nav.map(n => <li key={n}><a href={`#${n.toLowerCase()}`} onClick={jump(n.toLowerCase())} className="block px-3 py-2 rounded-lg hover:bg-lime hover:text-ink">{n}</a></li>)}<li><a href={resumeUrl} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-lg hover:bg-lime hover:text-ink">My Resume</a></li></ul>}
     </header>
   )
 }
@@ -59,10 +60,10 @@ function Hero() {
   return (
     <section id="top" className="min-h-screen px-5 md:px-10 pt-28 pb-0 grid lg:grid-cols-12 gap-10 items-center max-w-[1400px] mx-auto">
       <div className="lg:col-span-7">
-        <Mono className="text-ink/65">Full-stack developer / AI engineering</Mono>
+        <Mono className="text-ink/65">i'm glad you're here :) </Mono>
         <h1 className="mt-5 text-[clamp(38px,7.2vw,118px)]">Hi, I'm<br/><span className="bg-lav px-2 -mx-2">MARYAM</span> Rauf.</h1>
-        <p className="mt-6 font-display text-2xl md:text-3xl font-medium tracking-tight">Full-stack development × AI engineering.</p>
-        <p className="mt-3 max-w-[48ch] text-ink/75">I build web applications, work with APIs and data, and explore how AI can turn ideas into useful tools.</p>
+        <p className="mt-6 font-display text-2xl md:text-3xl font-medium tracking-tight">Full stack developer × Applied AI engineer.</p>
+        <p className="mt-3 max-w-[48ch] text-ink/75">I develop web applications using the MERN stack and apply AI where it can make a useful difference.</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#projects" onClick={(e)=>{e.preventDefault();document.getElementById('projects').scrollIntoView()}} className="group bg-ink text-off px-6 py-3.5 rounded-full font-display font-extrabold hover:bg-lime hover:text-ink transition-colors">EXPLORE MY WORK <Arrow/></a>
           <a href="#contact" onClick={(e)=>{e.preventDefault();document.getElementById('contact').scrollIntoView()}} className="border border-ink px-6 py-3.5 rounded-full font-display font-extrabold hover:bg-lav transition-colors">LET'S CONNECT</a>
@@ -85,11 +86,14 @@ function ProjectCard({ p }) {
           <span className="absolute -bottom-3 left-3 bg-lime text-ink px-2.5 py-0.5 font-mono text-[10px] uppercase">↳ {p.note}</span>
         </Link>
         <div className="pt-7 flex-1 flex flex-col">
-          <Mono className="opacity-70">{p.n} / {p.group === 'web' ? 'Full-stack' : 'AI / ML'}</Mono>
+          <Mono className="opacity-70">{p.n} / {p.group === 'web' ? 'Full stack' : 'AI / ML'}</Mono>
           <h3 className="mt-2 text-[clamp(26px,2.6vw,38px)]">{p.title}</h3>
           <p className="mt-2 text-sm opacity-85 max-w-[46ch]">{p.summary}</p>
           <ul className="mt-4 flex flex-wrap gap-1.5">{p.tags.slice(0, 5).map(t => <li key={t} className="font-mono text-[10px] border border-ink px-2 py-0.5 rounded-full transition-colors hover:bg-lime">{t}</li>)}</ul>
-          <Link to={`/project/${p.id}`} className="mt-auto pt-5 self-start font-display font-extrabold text-sm"><span className="border-b-2 border-lime pb-0.5">VIEW CASE STUDY <Arrow/></span></Link>
+          <div className="mt-auto pt-5 flex flex-wrap gap-x-5 gap-y-2 font-display font-extrabold text-sm">
+            <Link to={`/project/${p.id}`}><span className="border-b-2 border-lime pb-0.5">VIEW CASE STUDY <Arrow/></span></Link>
+            {p.live && <a href={p.live} target="_blank" rel="noopener noreferrer"><span className="border-b-2 border-lime pb-0.5">LIVE DEMO <Arrow/></span></a>}
+          </div>
         </div>
       </article>
     </Reveal>
@@ -115,7 +119,10 @@ function Experience() {
           <Reveal><div className="grid md:grid-cols-12 gap-5">
             <div className="md:col-span-5"><Mono className="text-ink/65 block">{e.period || 'Dates — add in data.js'} · {e.mode}</Mono><h3 className="mt-2 text-[clamp(26px,2.8vw,40px)]">{e.role}</h3><p className="mt-1 font-display text-lg">{e.org}</p></div>
             <div className="md:col-span-7"><ul className="space-y-2.5 list-none">{e.bullets.map(b => <li key={b} className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-2 before:bg-lime before:border before:border-ink">{b}</li>)}</ul>
-              {e.cert && <img src={img(e.cert)} alt="NovaXccelerate internship certificate of completion" loading="lazy" className="mt-5 w-36 border border-ink"/>}</div>
+              {e.cert && <a href={img(e.cert)} target="_blank" rel="noopener noreferrer" aria-label={`Open ${e.org} internship certificate`} className="group relative mt-5 block w-36 overflow-hidden border border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+                <img src={img(e.cert)} alt={`${e.org} internship certificate of completion`} loading="lazy" className="block w-full transition-transform duration-300 group-hover:scale-[1.02]"/>
+                <span className="absolute inset-0 flex items-center justify-center bg-ink/65 px-2 text-center font-display font-extrabold text-off opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">View certificate <Arrow/></span>
+              </a>}</div>
           </div></Reveal>
         </li>))}</ol>
     </section>
@@ -143,7 +150,10 @@ function Certificates() {
       <h2 className="text-[clamp(32px,4.8vw,70px)]">Certificates<br/>&amp; learning</h2>
       <div className="mt-10">{certs.map(c => (
         <Reveal key={c.t}><div className="grid md:grid-cols-12 gap-6 py-8 items-start">
-          <div className="md:col-span-3">{c.img ? <img src={img(c.img)} alt={`${c.t} certificate preview`} loading="lazy" className="w-full border border-ink"/> : <div className="aspect-[4/3] bg-lav border border-ink p-4 flex items-end font-display font-extrabold text-2xl leading-none">{c.t}</div>}</div>
+          <div className="md:col-span-3">{c.img ? <a href={c.url || img(c.img)} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.t} certificate`} className="group relative block overflow-hidden border border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+            <img src={img(c.img)} alt={`${c.t} certificate preview`} loading="lazy" className="block w-full transition-transform duration-300 group-hover:scale-[1.02]"/>
+            <span className="absolute inset-0 flex items-center justify-center bg-ink/65 font-display font-extrabold text-off opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">View certificate <Arrow/></span>
+          </a> : <div className="aspect-[4/3] bg-lav border border-ink p-4 flex items-end font-display font-extrabold text-2xl leading-none">{c.t}</div>}</div>
           <div className="md:col-span-5"><h3 className="text-3xl">{c.t}</h3><p className="mt-2 font-display">{c.p}</p><p className="mt-3 text-ink/80">{c.d}</p></div>
           <div className="md:col-span-4"><Mono className="block text-ink/65">{c.date}{c.dur && ` · ${c.dur}`}</Mono><ul className="mt-3 flex flex-wrap gap-1.5">{c.tags.map(t => <li key={t} className="font-mono text-[11px] border border-ink px-2 py-0.5 rounded-full">{t}</li>)}</ul>
             {c.url && <a href={c.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block font-display font-extrabold border-b-2 border-lime">View Certificate <Arrow/></a>}</div>
@@ -158,7 +168,7 @@ function About() {
       <h2 className="md:col-span-5 text-[clamp(32px,4.8vw,70px)]">A little<br/>context</h2>
       <Reveal className="md:col-span-7"><div>
         <p className="font-display font-medium text-2xl md:text-4xl leading-tight tracking-tight">I like understanding how things work, then building something with what I learned.</p>
-        <p className="mt-6 max-w-[58ch] text-ink/80">My work sits somewhere between full-stack development and AI engineering, from building web applications and APIs to experimenting with NLP, transformers, LLMs and intelligent systems.</p>
+        <p className="mt-6 max-w-[58ch] text-ink/80">My work sits somewhere between full stack development and AI engineering, from building web applications and APIs to experimenting with LLMs and RAG systems.</p>
         <p className="mt-4 font-mono text-xs text-ink/65">I'm open to new opportunities and collaborations.</p>
       </div></Reveal>
     </section>
@@ -201,7 +211,7 @@ function Case() {
       <p className="mt-4 font-display text-2xl max-w-[34ch]">{p.kind || p.summary}</p>
       <div className="mt-12">
         <Section n="01" title="Overview"><p className="max-w-[64ch]">{p.summary}</p></Section>
-        <Section n="02" title="Problem or purpose"><p className="max-w-[64ch]">{p.purpose}</p></Section>
+        <Section n="02" title="Purpose"><p className="max-w-[64ch]">{p.purpose}</p></Section>
         <Section n="03" title="Features I implemented"><Bul items={p.features}/></Section>
         <Section n="04" title="Architecture and how it works"><ol className="flex flex-wrap items-center gap-2">{p.arch.map((a, k) => <li key={a} className="flex items-center gap-2"><span className="border border-ink px-3 py-2 font-mono text-xs bg-off border-l-4 border-l-lime">{a}</span>{k < p.arch.length - 1 && <span aria-hidden="true">→</span>}</li>)}</ol></Section>
         <Section n="05" title="Technical decisions and challenges"><Bul items={p.decisions}/></Section>
